@@ -6,6 +6,18 @@ public class Rectangle {
     private final long area;
 
     public Rectangle(int a, int b) {
+        if (a < 0) {
+            throw new IllegalArgumentException(
+                    "Side can't be negative" + a);
+        }
+        if (b < 0) {
+            throw new IllegalArgumentException(
+                    "Side can't be negative" + b);
+        }
+        if (a == 0 || b == 0) {
+            throw new IllegalArgumentException("Side can't be zero" + b);
+        }
+
         length = Math.max(a, b);
         width = Math.min(a, b);
         area = (long) a * (long) b;

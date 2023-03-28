@@ -3,6 +3,7 @@ package homework48;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
 public class RectangleTest {
     @Test
@@ -41,5 +42,19 @@ public class RectangleTest {
         int length = Math.max(sideA,sideB);
 
         assertEquals(length, rect.getLength());
+    }
+    @Test
+    public void zeroSides(){
+        assertThrowsExactly(IllegalAccessException.class, ()-> new Rectangle(0,3));
+        assertThrowsExactly(IllegalAccessException.class, ()-> new Rectangle(3,0));
+        assertThrowsExactly(IllegalAccessException.class, ()-> new Rectangle(0,0));
+
+    }
+    @Test
+    public void negativeSides(){
+        assertThrowsExactly(IllegalAccessException.class, ()-> new Rectangle(-1,3));
+        assertThrowsExactly(IllegalAccessException.class, ()-> new Rectangle(3,-1));
+        assertThrowsExactly(IllegalAccessException.class, ()-> new Rectangle(-2,-3));
+
     }
 }
