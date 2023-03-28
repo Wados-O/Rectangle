@@ -65,5 +65,24 @@ public class RectangleComparatorTests {
         assertEquals(0, res1);
         assertEquals(0, res2);
     }
+    @Test
+    public void sameRectangles(){
+        Rectangle rect1 = new Rectangle(2, 3);
+        Rectangle rect2 = new Rectangle(2, 3);
+
+
+        int res1 = comparator.compare(rect1, rect2);
+        int res2 = comparator.compare(rect2, rect1);
+
+        assertEquals(0, res1);
+        assertEquals(0, res2);
+    }
+    @Test
+    public void nullRectangles(){
+        Rectangle rect = new Rectangle(2,3);
+        assertThrowsExactly(NullPointerException.class, () -> comparator.compare(null, rect));
+        assertThrowsExactly(NullPointerException.class, () -> comparator.compare(rect, null));
+        assertThrowsExactly(NullPointerException.class, () -> comparator.compare(null, null));
+    }
 }
 
